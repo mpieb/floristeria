@@ -30,6 +30,7 @@ public class ProducteController {
 	}
 	
 	public void mostrarStock() {
+		System.out.println(producteRepository.getProductes());
 		producteView.mostrarStock();
 	}
 }

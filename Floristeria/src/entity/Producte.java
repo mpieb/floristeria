@@ -35,4 +35,8 @@ public abstract class Producte {
 		this.preu = preu;
 	}
 
+	@Override
+	public String toString() {
+		return "Producte [id=" + id + ", nom=" + nom + ", preu=" + preu + "]";
+	}
 }
