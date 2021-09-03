@@ -1,19 +1,19 @@
 package entity;
 
 public class Decoracio extends Producte{
-	private String material;
+	private Material material;
 
-    public Decoracio (String nom, String material, double preu) throws Exception {
+    public Decoracio (String nom, Material material, double preu) throws Exception {
         super(nom, preu);
         if (material == null) throw new Exception();
         this.material = material;
     }
     
-    public String getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
-    public void setMaterial(String material){
+    public void setMaterial(Material material){
         this.material = material;
     }
 
