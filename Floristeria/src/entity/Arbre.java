@@ -1,22 +1,22 @@
 package entity;
 
 public class Arbre extends Producte {
-	private double alçada;
+	private double mida;
 
-	public Arbre(String nom, double alçada, double preu ) throws Exception {
+	public Arbre(String nom, double mida, double preu ) throws Exception {
 		super(nom, preu);
-        if (alçada <= 0) throw new Exception();
-        this.alçada = alçada;
-    }
-
-    public void setAlçada(double alçada){
-        this.alçada = alçada;
-    }
-
-    public double getAlçada() {
-        return alçada;
+        if (mida <= 0) throw new Exception();
+        this.mida = mida;
     }
 	
+	public double getMida() {
+        return mida;
+    }
+
+    public void setMida(double mida){
+        this.mida = mida;
+    }
+
 }
 
 
