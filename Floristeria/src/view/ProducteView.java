@@ -16,10 +16,10 @@ public class ProducteView {
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.next();
+		scan.nextLine();
 		System.out.println("Introdueix la mida:");
 		double mida = scan.nextDouble();
-		scan.next();
+		scan.nextLine();
 
 		Arbre arbre = null;
 
@@ -37,7 +37,7 @@ public class ProducteView {
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.next();
+		scan.nextLine();
 		System.out.println("Introdueix el color:");
 		String color = scan.nextLine();
 
@@ -57,7 +57,7 @@ public class ProducteView {
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.next();
+		scan.nextLine();
 
 		Material material = getMaterial();
 
@@ -86,9 +86,11 @@ public class ProducteView {
 			switch (opcio.toLowerCase()) {
 			case "a":
 				material = Material.Fusta;
+				passed = true;
 				break;
 			case "b":
 				material = Material.Plastic;
+				passed = true;
 				break;
 			default:
 				System.out.println("--> L'opció introduïda no existeix <--");
