@@ -32,4 +32,10 @@ public class ProducteController {
 	public void mostrarStock() {
 		producteView.mostrarStock(producteRepository.getProductes());
 	}
+	
+	public void retirarProducte() {
+		Producte producte = producteView.retirarProducte();
+		ProducteRepository.deleteProducteById(idProducte);
+	}
+
 }
