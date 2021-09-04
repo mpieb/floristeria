@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.ProducteController;
+import entity.Floristeria;
 
 public class AppView {
 
@@ -21,9 +22,19 @@ public class AppView {
 	}
 
 	private static void crearFloristeria() {
-		System.out.println("Introdueix nom de floristeria: ");
-		String nom = scan.nextLine();
-		System.out.println("\n\nBenvingut a la floristeria: " + nom);
+		Floristeria floristeria = null;
+		boolean ok = false;
+		while(!ok) {
+			System.out.println("\nIntrodueix nom de floristeria: ");
+			String nom = scan.nextLine();
+			try {
+				floristeria = new Floristeria(nom);
+				ok = true;
+			} catch (Exception e) {
+				System.out.println("\n--> Introdueix un nom vàlid <--");
+			}
+		}
+		System.out.println("\n\nBenvingut a la floristeria: " + floristeria.getNomFloristeria());
 	}
 
 	private static void menuPrincipal() {
