@@ -28,8 +28,8 @@ public class AppView {
 
 	private static void menuPrincipal() {
 		System.out.println("\nQuè vols fer?\na) Afegir arbre");
-		System.out.println("b) Afegir flor\nc) Afegir decoració");
-		System.out.println("d) Mostrar stock\ne) Sortir");
+		System.out.println("b) Afegir flor\nc) Afegir decoració\nd) Retirar producte");
+		System.out.println("e) Mostrar stock\nf) Sortir");
 
 		String opcio = scan.nextLine();
 
@@ -44,9 +44,12 @@ public class AppView {
 			producteController.afegirDecoracio();
 			break;
 		case "d":
-			producteController.mostrarStock();
+			//producteController.retirarProducte();
 			break;
 		case "e":
+			producteController.mostrarStock();
+			break;
+		case "f":
 			System.out.println("\n--> Programa finalitzat. <--");
 			run = false;
 			break;
