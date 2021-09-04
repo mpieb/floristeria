@@ -34,8 +34,8 @@ public class ProducteController {
 	}
 	
 	public void retirarProducte() {
-		Producte producte = producteView.retirarProducte();
-		ProducteRepository.deleteProducteById(idProducte);
+		int idProducte = producteView.retirarProducte();
+		producteRepository.deleteProducteById(idProducte);
 	}
 
 }
