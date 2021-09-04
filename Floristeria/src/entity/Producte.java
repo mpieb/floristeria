@@ -34,9 +34,4 @@ public abstract class Producte {
 	public void setPreu(double preu) {
 		this.preu = preu;
 	}
-
-	@Override
-	public String toString() {
-		return "Producte [id=" + id + ", nom=" + nom + ", preu=" + preu + "]";
-	}
 }
