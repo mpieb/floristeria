@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.ProducteController;
+import entity.Floristeria;
 
 public class AppView {
 
@@ -21,15 +22,25 @@ public class AppView {
 	}
 
 	private static void crearFloristeria() {
-		System.out.println("Introdueix nom de floristeria: ");
-		String nom = scan.nextLine();
-		System.out.println("\n\nBenvingut a la floristeria: " + nom);
+		Floristeria floristeria = null;
+		boolean ok = false;
+		while(!ok) {
+			System.out.println("\nIntrodueix nom de floristeria: ");
+			String nom = scan.nextLine();
+			try {
+				floristeria = new Floristeria(nom);
+				ok = true;
+			} catch (Exception e) {
+				System.out.println("\n--> Introdueix un nom vàlid <--");
+			}
+		}
+		System.out.println("\n\nBenvingut a la floristeria: " + floristeria.getNomFloristeria());
 	}
 
 	private static void menuPrincipal() {
 		System.out.println("\nQuè vols fer?\na) Afegir arbre");
-		System.out.println("b) Afegir flor\nc) Afegir decoració");
-		System.out.println("d) Mostrar stock\ne) Sortir");
+		System.out.println("b) Afegir flor\nc) Afegir decoració\nd) Retirar producte");
+		System.out.println("e) Mostrar stock\nf) Sortir");
 
 		String opcio = scan.nextLine();
 
@@ -44,9 +55,12 @@ public class AppView {
 			producteController.afegirDecoracio();
 			break;
 		case "d":
-			producteController.mostrarStock();
+			//producteController.retirarProducte();
 			break;
 		case "e":
+			producteController.mostrarStock();
+			break;
+		case "f":
 			System.out.println("\n--> Programa finalitzat. <--");
 			run = false;
 			break;

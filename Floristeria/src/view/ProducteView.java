@@ -76,17 +76,25 @@ public class ProducteView {
 	}
 
 	public void mostrarStock(List<Producte> productes) {
+		double valorStock = productes.stream().mapToDouble(p -> p.getPreu()).sum();
 		List<Producte> arbres = getProductesType(Arbre.class, productes);
 		List<Producte> flors = getProductesType(Flor.class, productes);
 		List<Producte> decoracions = getProductesType(Decoracio.class, productes);
 		
-		System.out.println("\nSTOCK");
-		System.out.println("\tARBRES: " + arbres.size());
+		System.out.println("\nSTOCK (valor total: " + valorStock + " euros)");
+		System.out.println("\tARBRES: " + arbres.size() + " unitats");
 		arbres.forEach(p -> System.out.println("\t\t" + p.toString()));
-		System.out.println("\tFLORS: " + flors.size());
+		System.out.println("\tFLORS: " + flors.size() + " unitats");
 		flors.forEach(p -> System.out.println("\t\t" + p.toString()));
-		System.out.println("\tDECORACIO: " + decoracions.size());
+		System.out.println("\tDECORACIO: " + decoracions.size() + " unitats");
 		decoracions.forEach(p -> System.out.println("\t\t" + p.toString()));
+	}
+	
+	public int retirarProducte() {
+		System.out.println("Introdueix l'ID del producte que vols retirar:");
+		int producteId = scan.nextInt();
+		scan.nextLine();
+		return producteId;
 	}
 
 	/**
@@ -96,7 +104,7 @@ public class ProducteView {
 	public List<Producte> getProductesType(Class<?> type, List<Producte> productes) {
 		return productes.stream().filter(p -> p.getClass() == type).collect(Collectors.toList());
 	}
-
+	
 	/**
 	 * Mostra un menú que demana a l'usuari escollir entre dues opcions: Fusta o
 	 * Plastic
