@@ -88,6 +88,13 @@ public class ProducteView {
 		System.out.println("\tDECORACIO: " + decoracions.size());
 		decoracions.forEach(p -> System.out.println("\t\t" + p.toString()));
 	}
+	
+	public int retirarProducte() {
+		System.out.println("Introdueix l'ID del producte que vols retirar:");
+		int producteId = scan.nextInt();
+		scan.nextLine();
+		return producteId;
+	}
 
 	/**
 	 * Retorna una llista amb un tipus determinat de producte (Arbre, Flor,
