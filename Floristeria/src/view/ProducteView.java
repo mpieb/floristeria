@@ -1,11 +1,14 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import entity.Arbre;
 import entity.Decoracio;
 import entity.Flor;
 import entity.Material;
+import entity.Producte;
 
 public class ProducteView {
 
@@ -72,10 +75,32 @@ public class ProducteView {
 		return decoracio;
 	}
 
-	public void mostrarStock() {
-		System.out.println("\n---->>> STOCK (falta implementar) <<<----");
+	public void mostrarStock(List<Producte> productes) {
+		List<Producte> arbres = getProductesType(Arbre.class, productes);
+		List<Producte> flors = getProductesType(Flor.class, productes);
+		List<Producte> decoracions = getProductesType(Decoracio.class, productes);
+		
+		System.out.println("\nSTOCK");
+		System.out.println("\tARBRES: " + arbres.size());
+		arbres.forEach(p -> System.out.println("\t\t" + p.toString()));
+		System.out.println("\tFLORS: " + flors.size());
+		flors.forEach(p -> System.out.println("\t\t" + p.toString()));
+		System.out.println("\tDECORACIO: " + decoracions.size());
+		decoracions.forEach(p -> System.out.println("\t\t" + p.toString()));
 	}
 
+	/**
+	 * Retorna una llista amb un tipus determinat de producte (Arbre, Flor,
+	 * Decoració, etc)
+	 */
+	public List<Producte> getProductesType(Class<?> type, List<Producte> productes) {
+		return productes.stream().filter(p -> p.getClass() == type).collect(Collectors.toList());
+	}
+
+	/**
+	 * Mostra un menú que demana a l'usuari escollir entre dues opcions: Fusta o
+	 * Plastic
+	 */
 	public Material getMaterial() {
 		Material material = null;
 		String opcio;
