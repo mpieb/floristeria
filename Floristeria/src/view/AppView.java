@@ -55,7 +55,7 @@ public class AppView {
 			producteController.afegirDecoracio();
 			break;
 		case "d":
-			//producteController.retirarProducte();
+			producteController.retirarProducte();
 			break;
 		case "e":
 			producteController.mostrarStock();
