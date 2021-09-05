@@ -22,6 +22,7 @@ public class AppView {
 
 	}
 
+	/** Demana a l'usuari l'introducció de les dades de la floristeria */
 	private static void crearFloristeria() {
 		Floristeria floristeria = null;
 		boolean ok = false;
@@ -38,6 +39,7 @@ public class AppView {
 		System.out.println("\n\nBenvingut a la floristeria: " + floristeria.getNomFloristeria());
 	}
 
+	/** Mostra el menú principal */
 	private static void menuPrincipal() {
 		System.out.println("\nQue vols fer?\na) Gestionar productes");
 		System.out.println("b) Gestionar tickets\nc) Mostrar stock\nd) Sortir");
@@ -63,6 +65,7 @@ public class AppView {
 		}
 	}
 
+	/** Mostra el menú per a la gestió de productes */
 	private static void gestionarProductes() {
 		System.out.println("\nGESTIONAR PRODUCTES:");
 		System.out.println("a) Afegir arbre\nb) Afegir flor");
@@ -88,6 +91,7 @@ public class AppView {
 		}
 	}
 
+	/** Mostra un menu per la gestió de Tickets */
 	private static void gestionarTickets() {
 		System.out.println("\nGESTIONAR TICKETS:");
 		System.out.println("a) Crear ticket\nb) Mostrar tickets");

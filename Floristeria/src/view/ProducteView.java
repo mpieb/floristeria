@@ -14,6 +14,10 @@ public class ProducteView {
 
 	private static NotEmptyScanner scan = new NotEmptyScanner();
 
+	/**
+	 * Vista que demana a l'usuari les dades necessàries per crear un objecte Arbre,
+	 * i el retorna.
+	 */
 	public Arbre afegirArbre() {
 		System.out.println("Introdueix nom de l'arbre:");
 		String nom = scan.nextLine();
@@ -33,6 +37,10 @@ public class ProducteView {
 		return arbre;
 	}
 
+	/**
+	 * Vista que demana a l'usuari les dades necessàries per crear un objecte Flor,
+	 * i el retorna.
+	 */
 	public Flor afegirFlor() {
 		System.out.println("Introdueix nom de la flor:");
 		String nom = scan.nextLine();
@@ -52,6 +60,10 @@ public class ProducteView {
 		return flor;
 	}
 
+	/**
+	 * Vista que demana a l'usuari les dades necessàries per crear un objecte
+	 * Decoració, i el retorna.
+	 */
 	public Decoracio afegirDecoracio() {
 		System.out.println("Introdueix nom de la decoracio:");
 		String nom = scan.nextLine();
@@ -71,6 +83,7 @@ public class ProducteView {
 		return decoracio;
 	}
 
+	/** Mètode que mostra per consola l'estoc de productes que té la floristeria. */
 	public void mostrarStock(List<Producte> productes) {
 		double valorStock = productes.stream().mapToDouble(p -> p.getPreu()).sum();
 		List<Producte> arbres = getProductesType(Arbre.class, productes);
@@ -86,8 +99,12 @@ public class ProducteView {
 		decoracions.forEach(p -> System.out.println("\t\t" + p.toString()));
 	}
 
+	/**
+	 * Mètode que demana a l'usuari la introducció d'un ID de producte a retirar i
+	 * el retorna.
+	 */
 	public int retirarProducte() {
-		System.out.println("Introdueix l'ID del producte que vols retirar:");
+		System.out.println("InArbretrodueix l'ID del producte que vols retirar:");
 		int producteId = scan.nextInt();
 		return producteId;
 	}
