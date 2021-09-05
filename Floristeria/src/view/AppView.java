@@ -1,18 +1,17 @@
 package view;
 
-import java.util.Scanner;
-
 import controller.ProducteController;
 import controller.TicketController;
 import entity.Floristeria;
+import utilities.NotEmptyScanner;
 
 public class AppView {
 
-	private static Scanner scan = new Scanner(System.in);
+	private static NotEmptyScanner scan = new NotEmptyScanner();
 	private static boolean run = true;
 	private static ProducteController producteController = new ProducteController();
 	private static TicketController ticketController = new TicketController();
-	
+
 	public static void main(String[] args) {
 
 		crearFloristeria();
@@ -26,21 +25,21 @@ public class AppView {
 	private static void crearFloristeria() {
 		Floristeria floristeria = null;
 		boolean ok = false;
-		while(!ok) {
+		while (!ok) {
 			System.out.println("\nIntrodueix nom de floristeria: ");
 			String nom = scan.nextLine();
 			try {
 				floristeria = new Floristeria(nom);
 				ok = true;
 			} catch (Exception e) {
-				System.out.println("\n--> Introdueix un nom vàlid <--");
+				System.out.println("\n--> Introdueix un nom valid <--");
 			}
 		}
 		System.out.println("\n\nBenvingut a la floristeria: " + floristeria.getNomFloristeria());
 	}
 
 	private static void menuPrincipal() {
-		System.out.println("\nQuè vols fer?\na) Gestionar productes");
+		System.out.println("\nQue vols fer?\na) Gestionar productes");
 		System.out.println("b) Gestionar tickets\nc) Mostrar stock\nd) Sortir");
 
 		String opcio = scan.nextLine();
@@ -60,17 +59,17 @@ public class AppView {
 			run = false;
 			break;
 		default:
-			System.out.println("--> L'opció introduïda no existeix. <--");
+			System.out.println("--> L'opcio introduida no existeix. <--");
 		}
 	}
-	
+
 	private static void gestionarProductes() {
 		System.out.println("\nGESTIONAR PRODUCTES:");
 		System.out.println("a) Afegir arbre\nb) Afegir flor");
 		System.out.println("c) Afegir decoracio\nd) Retirar producte");
-		
+
 		String opcio = scan.nextLine();
-		
+
 		switch (opcio.toLowerCase()) {
 		case "a":
 			producteController.afegirArbre();
@@ -85,14 +84,14 @@ public class AppView {
 			producteController.retirarProducte();
 			break;
 		default:
-			System.out.println("--> L'opció introduïda no existeix. <--");
+			System.out.println("--> L'opcio introduida no existeix. <--");
 		}
 	}
-	
+
 	private static void gestionarTickets() {
 		System.out.println("\nGESTIONAR TICKETS:");
 		System.out.println("a) Crear ticket\nb) Mostrar tickets");
-		
+
 		String opcio = scan.nextLine();
 
 		switch (opcio.toLowerCase()) {
@@ -103,7 +102,7 @@ public class AppView {
 			ticketController.mostrarTickets();
 			break;
 		default:
-			System.out.println("--> L'opció introduïda no existeix. <--");
+			System.out.println("--> L'opcio introduida no existeix. <--");
 		}
 	}
 

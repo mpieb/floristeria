@@ -83,7 +83,24 @@ public class NotEmptyScanner {
 				result = SCAN.nextInt();
 				passed = true;
 			} catch (InputMismatchException e) {
-				System.out.println("No es un número enter.");
+				System.out.println("No es un numero enter");
+				SCAN.nextLine();
+			}
+		} while (!passed);
+
+		return result;
+	}
+
+	public double nextDouble() {
+		double result = 0;
+		boolean passed = false;
+
+		do {
+			try {
+				result = SCAN.nextDouble();
+				passed = true;
+			} catch (InputMismatchException e) {
+				System.out.println("No es un numero decimal");
 				SCAN.nextLine();
 			}
 		} while (!passed);

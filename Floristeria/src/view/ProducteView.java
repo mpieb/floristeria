@@ -1,7 +1,6 @@
 package view;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import entity.Arbre;
@@ -9,27 +8,26 @@ import entity.Decoracio;
 import entity.Flor;
 import entity.Material;
 import entity.Producte;
+import utilities.NotEmptyScanner;
 
 public class ProducteView {
 
-	private static Scanner scan = new Scanner(System.in);
+	private static NotEmptyScanner scan = new NotEmptyScanner();
 
 	public Arbre afegirArbre() {
 		System.out.println("Introdueix nom de l'arbre:");
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.nextLine();
 		System.out.println("Introdueix la mida:");
 		double mida = scan.nextDouble();
-		scan.nextLine();
 
 		Arbre arbre = null;
 
 		try {
 			arbre = new Arbre(nom, mida, preu);
 		} catch (Exception e) {
-			System.out.print("\n--> No has completat bé algun camp <--");
+			System.out.print("\n--> No has completat be algun camp <--");
 		}
 
 		return arbre;
@@ -40,7 +38,6 @@ public class ProducteView {
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.nextLine();
 		System.out.println("Introdueix el color:");
 		String color = scan.nextLine();
 
@@ -49,7 +46,7 @@ public class ProducteView {
 		try {
 			flor = new Flor(nom, color, preu);
 		} catch (Exception e) {
-			System.out.print("\n--> No has completat bé algun camp <--");
+			System.out.print("\n--> No has completat be algun camp <--");
 		}
 
 		return flor;
@@ -60,7 +57,6 @@ public class ProducteView {
 		String nom = scan.nextLine();
 		System.out.println("Introdueix el preu:");
 		double preu = scan.nextDouble();
-		scan.nextLine();
 
 		Material material = getMaterial();
 
@@ -69,7 +65,7 @@ public class ProducteView {
 		try {
 			decoracio = new Decoracio(nom, material, preu);
 		} catch (Exception e) {
-			System.out.print("\n--> No has completat bé algun camp <--");
+			System.out.print("\n--> No has completat be algun camp <--");
 		}
 
 		return decoracio;
@@ -80,7 +76,7 @@ public class ProducteView {
 		List<Producte> arbres = getProductesType(Arbre.class, productes);
 		List<Producte> flors = getProductesType(Flor.class, productes);
 		List<Producte> decoracions = getProductesType(Decoracio.class, productes);
-		
+
 		System.out.println("\nSTOCK (valor total: " + valorStock + " euros)");
 		System.out.println("\tARBRES: " + arbres.size() + " unitats");
 		arbres.forEach(p -> System.out.println("\t\t" + p.toString()));
@@ -89,11 +85,10 @@ public class ProducteView {
 		System.out.println("\tDECORACIO: " + decoracions.size() + " unitats");
 		decoracions.forEach(p -> System.out.println("\t\t" + p.toString()));
 	}
-	
+
 	public int retirarProducte() {
 		System.out.println("Introdueix l'ID del producte que vols retirar:");
 		int producteId = scan.nextInt();
-		scan.nextLine();
 		return producteId;
 	}
 
@@ -101,20 +96,20 @@ public class ProducteView {
 	 * Retorna una llista amb un tipus determinat de producte (Arbre, Flor,
 	 * Decoració, etc)
 	 */
-	public List<Producte> getProductesType(Class<?> type, List<Producte> productes) {
+	private List<Producte> getProductesType(Class<?> type, List<Producte> productes) {
 		return productes.stream().filter(p -> p.getClass() == type).collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * Mostra un menú que demana a l'usuari escollir entre dues opcions: Fusta o
 	 * Plastic
 	 */
-	public Material getMaterial() {
+	private Material getMaterial() {
 		Material material = null;
 		String opcio;
 		boolean passed = false;
 		while (!passed) {
-			System.out.println("Escull el material:\na) Fusta\nb) Plàstic");
+			System.out.println("Escull el material:\na) Fusta\nb) Plastic");
 			opcio = scan.nextLine();
 			switch (opcio.toLowerCase()) {
 			case "a":
@@ -126,7 +121,7 @@ public class ProducteView {
 				passed = true;
 				break;
 			default:
-				System.out.println("--> L'opció introduïda no existeix <--");
+				System.out.println("--> L'opcio introduida no existeix <--");
 			}
 		}
 		return material;
