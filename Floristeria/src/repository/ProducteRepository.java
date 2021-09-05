@@ -44,6 +44,7 @@ public class ProducteRepository {
 			producte = itr.next();
 			if (producte.getId() == id) {
 				itr.remove();
+				break;
 			}
 		}
 		return producte;
