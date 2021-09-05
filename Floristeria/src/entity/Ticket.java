@@ -1,4 +1,4 @@
-package demo;
+package entity;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +15,7 @@ public class Ticket {
 
 	public Ticket(List<Producte> compra) throws Exception {
 		if (compra.isEmpty())
-			throw new Exception("Heu d'introduir com a mínim un producte per crear un ticket.");
+			throw new Exception("Heu d'introduir com a mï¿½nim un producte per crear un ticket.");
 		id = properId++;
 		productes = compra;
 		valorTotal = compra.stream().mapToDouble((Producte::getPreu)).sum();
