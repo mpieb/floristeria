@@ -1,26 +1,32 @@
 package controller;
 
-import entity.Producte;
+import entity.Ticket;
+import repository.ProducteRepository;
 import repository.TicketRepository;
 import view.TicketView;
 
 public class TicketController {
 	
+	private ProducteRepository producteRepository;
 	private TicketRepository ticketRepository;
-	private RepositoryView repositoryView;
+	private TicketView ticketView;
 	
 	public TicketController() {
-		TicketRepository = new TicketRepository();
-		TicketView = new TicketView();
+		producteRepository = new ProducteRepository();
+		ticketRepository = new TicketRepository();
+		ticketView = new TicketView();
 	}
 	
 	public void crearTicket() {
-		Ticket ticket = TicketView.crearTicket();
-		TicketRepository.crearTicket(ticket);
+		Ticket ticket = ticketView.crearTicket(producteRepository.getProductes());
+		
+		ticket.getProductes().forEach(p -> producteRepository.deleteProducteById(p.getId()));
+		
+		ticketRepository.addTicket(ticket);
 	}
 	
-	public void mostrarTicket() {
-		ticketView.mostrarTicket(TicketRepository.getAllTickets());
+	public void mostrarTickets() {
+		ticketView.mostrarTickets(ticketRepository.getAllTickets());
 	}
 
 }

@@ -16,8 +16,7 @@ public class TicketRepository {
 			return ticketList;
 		}
 				
-		public void addTicket(Ticket Ticket) throws Exception {
-			if(Ticket==null) throw new Exception();
+		public void addTicket(Ticket Ticket) {
 			ticketList.add(Ticket);
 		}		
 

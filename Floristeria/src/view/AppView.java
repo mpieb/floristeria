@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.ProducteController;
+import controller.TicketController;
 import entity.Floristeria;
 
 public class AppView {
@@ -10,7 +11,8 @@ public class AppView {
 	private static Scanner scan = new Scanner(System.in);
 	private static boolean run = true;
 	private static ProducteController producteController = new ProducteController();
-
+	private static TicketController ticketController = new TicketController();
+	
 	public static void main(String[] args) {
 
 		crearFloristeria();
@@ -38,12 +40,37 @@ public class AppView {
 	}
 
 	private static void menuPrincipal() {
-		System.out.println("\nQuè vols fer?\na) Afegir arbre");
-		System.out.println("b) Afegir flor\nc) Afegir decoració\nd) Retirar producte");
-		System.out.println("e) Mostrar stock\nf) Sortir");
+		System.out.println("\nQuè vols fer?\na) Gestionar productes");
+		System.out.println("b) Gestionar tickets\nc) Mostrar stock\nd) Sortir");
 
 		String opcio = scan.nextLine();
 
+		switch (opcio.toLowerCase()) {
+		case "a":
+			gestionarProductes();
+			break;
+		case "b":
+			gestionarTickets();
+			break;
+		case "c":
+			producteController.mostrarStock();
+			break;
+		case "d":
+			System.out.println("\n--> Programa finalitzat. <--");
+			run = false;
+			break;
+		default:
+			System.out.println("--> L'opció introduïda no existeix. <--");
+		}
+	}
+	
+	private static void gestionarProductes() {
+		System.out.println("\nGESTIONAR PRODUCTES:");
+		System.out.println("a) Afegir arbre\nb) Afegir flor");
+		System.out.println("c) Afegir decoracio\nd) Retirar producte");
+		
+		String opcio = scan.nextLine();
+		
 		switch (opcio.toLowerCase()) {
 		case "a":
 			producteController.afegirArbre();
@@ -57,12 +84,23 @@ public class AppView {
 		case "d":
 			producteController.retirarProducte();
 			break;
-		case "e":
-			producteController.mostrarStock();
+		default:
+			System.out.println("--> L'opció introduïda no existeix. <--");
+		}
+	}
+	
+	private static void gestionarTickets() {
+		System.out.println("\nGESTIONAR TICKETS:");
+		System.out.println("a) Crear ticket\nb) Mostrar tickets");
+		
+		String opcio = scan.nextLine();
+
+		switch (opcio.toLowerCase()) {
+		case "a":
+			ticketController.crearTicket();
 			break;
-		case "f":
-			System.out.println("\n--> Programa finalitzat. <--");
-			run = false;
+		case "b":
+			ticketController.mostrarTickets();
 			break;
 		default:
 			System.out.println("--> L'opció introduïda no existeix. <--");
