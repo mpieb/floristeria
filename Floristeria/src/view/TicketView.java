@@ -23,14 +23,14 @@ public class TicketView {
 			Optional<Producte> producte = getProducte(producteId, productes);
 
 			if (producte.isEmpty()) {
-				System.out.println("L'ID introduït no existeix.");
+				System.out.println("L'ID introduit no existeix.");
 			} else if (compres.contains(producte.get())) {
 				System.out.println("Ja escollit aquest producte.");
 			} else {
 				compres.add(producte.get());
-				System.out.println("Vols seguir comprant? (S/N):");
 			}
 
+			System.out.println("Vols seguir comprant? (S/N):");
 			comprar = scan.nextBoolean();
 		}
 
