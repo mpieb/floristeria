@@ -1,7 +1,9 @@
-package demo;
+package repository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.Ticket;
 
 public class TicketRepository {
 	
