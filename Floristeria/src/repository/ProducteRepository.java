@@ -37,14 +37,15 @@ public class ProducteRepository {
 	}
 
 	/** Elimina un producte pel seu ID */
-	public void deleteProducteById(int id) {
+	public Producte deleteProducteById(int id) {
+		Producte producte = null;
 		Iterator<Producte> itr = productes.iterator();
 		while (itr.hasNext()) {
-			Producte producte = itr.next();
+			producte = itr.next();
 			if (producte.getId() == id) {
 				itr.remove();
-				return;
 			}
 		}
+		return producte;
 	}
 }
