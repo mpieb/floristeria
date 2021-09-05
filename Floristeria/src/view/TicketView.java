@@ -12,6 +12,10 @@ public class TicketView {
 
 	private NotEmptyScanner scan = new NotEmptyScanner();
 
+	/**
+	 * Mètode que demana per consola la introducció de IDs de productes a comprar
+	 * per crear un objecte Ticket, i el retorna.
+	 */
 	public Ticket crearTicket(List<Producte> productes) {
 		boolean comprar = true;
 		List<Producte> compres = new ArrayList<Producte>();
@@ -45,6 +49,10 @@ public class TicketView {
 		return ticket;
 	}
 
+	/**
+	 * Mètode que mostra tots els tickets amb els productes comprats. També indica
+	 * la quantitat total de diners guanyats.
+	 */
 	public void mostrarTickets(List<Ticket> tickets) {
 		System.out.println("\nDiners guanyats: " + tickets.stream().mapToDouble(t -> t.getValorTotal()).sum());
 		tickets.stream().forEach(ticket -> {
@@ -53,6 +61,10 @@ public class TicketView {
 		});
 	}
 
+	/**
+	 * Mètode que retorna un objecte Producte opcional d'una llista de productes
+	 * segons l'ID rebut per paràmetre.
+	 */
 	private Optional<Producte> getProducte(int producteId, List<Producte> productes) {
 		return productes.stream().filter(p -> p.getId() == producteId).findFirst();
 	}
